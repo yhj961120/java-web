@@ -1,0 +1,24 @@
+package com.java.dto;
+
+import java.util.Date;
+
+public class MemberVO {
+	private String id;  
+	private String pwd;  
+	private String name;
+	private String phone;
+	private String email;
+	private String address;
+	private String picture;
+	//위에는 기본정보 밑에는 시스템정보
+	private Date regDate;  //등록일
+	private String authority;  //권한
+	private int enabled;   //사용여부
+	private String register;  //등록자
+	
+	public MemberVO() {}
+	public MemberVO(String id, String pwd) {
+		this.id=id;
+		this.pwd=pwd;
+	}
+}

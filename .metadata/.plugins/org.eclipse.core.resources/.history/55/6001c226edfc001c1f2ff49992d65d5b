@@ -1,0 +1,11 @@
+package com.java.dto;
+
+public class SimpleDBConnection {
+	//1.드라이버로딩
+		Class.forNamedriver
+	//2.connection 생성
+	//3.statement
+	//4.resultSet
+	//5.data 주입
+	//6.
+}

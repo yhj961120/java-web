@@ -1,0 +1,45 @@
+package com.java.datasource;
+
+import java.io.Reader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+
+import org.apache.ibatis.io.Resources;
+
+public class JDBCDataSource {
+
+	private static JDBCDataSource instance = new JDBCDataSource();
+
+	private Connection conn;
+
+	private JDBCDataSource() {
+
+	}
+
+	{
+		String resource = "com/java/properties/db.properties";
+		Properties properties = new Properties();
+
+		try {
+			Reader reader = Resource.getResourceAsFile(resource);
+			properties.load(reader);
+
+			String driverClassName = properties.getProperty("jdbc.driverClassname");
+			String url = properties.getProperty("jdbc.url");
+			String username = properties.getProperty("jdbc.username");
+			String password = properties.getProperty("jdbc.password");
+
+			Class.forName(driverClassName);
+			conn = DriverManager.getConnection(url, username, password);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static JDBCDataSource getInstance() {
+		return instance;
+	}
+
+}
